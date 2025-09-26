@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+*/.venv/
+venv/
+ENV/
+
+# Temporary uploads
+.tmp.driveupload/
+.tmp.drivedownload/
+
+# Streamlit cache
+.streamlit/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Bytecode and build
+*.egg-info/
+.eggs/
+build/
+dist/
