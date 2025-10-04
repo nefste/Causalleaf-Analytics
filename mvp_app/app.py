@@ -1,33 +1,5 @@
 """Streamlit MVP für Kapazitätsplanung."""
-import plotly.io as pio
-
-# Configure Kaleido for headless Chromium on Streamlit Cloud
-# (do this before any fig.to_image() calls)
-def _configure_kaleido():
-    # Optional defaults
-    pio.kaleido.scope.default_format = "png"
-    pio.kaleido.scope.default_width = 1200
-    pio.kaleido.scope.default_height = 700
-    # Headless Chromium args
-    pio.kaleido.scope.chromium_args = [
-        "--headless",
-        "--no-sandbox",
-        "--disable-dev-shm-usage",
-        "--single-process",
-        "--disable-gpu",
-    ]
-
-try:
-    _configure_kaleido()
-except Exception as e:
-    # Don't crash the app if Kaleido isn't used;
-    # you can log or print for debugging
-    print(f"Kaleido setup warning: {e}")
-
-
-
 from __future__ import annotations
-
 from datetime import date
 from typing import Dict, List, Tuple
 
@@ -71,6 +43,31 @@ DEFAULT_PARAMS = {
     "param_ampel_gruen": 0.05,
     "param_ampel_gelb": 0.15,
 }
+
+import plotly.io as pio
+
+# Configure Kaleido for headless Chromium on Streamlit Cloud
+# (do this before any fig.to_image() calls)
+def _configure_kaleido():
+    # Optional defaults
+    pio.kaleido.scope.default_format = "png"
+    pio.kaleido.scope.default_width = 1200
+    pio.kaleido.scope.default_height = 700
+    # Headless Chromium args
+    pio.kaleido.scope.chromium_args = [
+        "--headless",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--single-process",
+        "--disable-gpu",
+    ]
+
+try:
+    _configure_kaleido()
+except Exception as e:
+    # Don't crash the app if Kaleido isn't used;
+    # you can log or print for debugging
+    print(f"Kaleido setup warning: {e}")
 
 
 def reset_defaults() -> None:
