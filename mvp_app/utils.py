@@ -27,6 +27,12 @@ def format_number(value: float, digits: int = 0) -> str:
 
 
 def figure_to_svg_bytes(fig: go.Figure) -> bytes:
+    fig.kaleido.scope.chromium_args = (
+        "--headless",
+        "--no-sandbox",
+        "--single-process",
+        "--disable-gpu"
+    )
     buffer = fig.to_image(format="svg")
     if isinstance(buffer, bytes):
         return buffer
